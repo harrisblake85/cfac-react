@@ -5,8 +5,10 @@ import {
 } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
-import Submissions from './Submissions.js';
-import Submission from './Submission.js'
+// import Submissions from './Submissions.js';
+// import Submission from './Submission.js'
+import Home from './Home.js'
+import About from './About.js'
 // import Best from './Best.js'
 
 class App extends Component {
@@ -73,45 +75,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.state.hello}</h1>
-        {this.state.submissions &&
-          <Submissions
-
-            submissions={this.state.submissions}
-            showSubmission = {this.showSubmission.bind(this)}
-            />
-        }
-
-        {this.state.best &&
-          <Submission
-            submission = {this.state.best}
-            showSubmission = {this.showSubmission.bind(this)}
-
-            />
-        }
-        {
-          this.state.submission &&
-          <Submission
-            submission = {this.state.submission}
-            />
-        }
-        {
-          <button onClick={
-              this.showHome.bind(this)
-            }>Home</button>
-
-        }
-        {
-          <button onClick={
-              this.showGallery.bind(this)
-            }>Gallery</button>
-
-        }
-
-
-
+      <BrowserRouter>
+      <div className="Container">
+        <Route exact path="/" component={Home}/>
+        <Route path="/about" component={About}/>
       </div>
+      </BrowserRouter>
     );
   }
 }
