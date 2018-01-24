@@ -93,7 +93,9 @@ class App extends Component {
                 <div>
                 <Gallery showGallery={this.showGallery.bind(this)}>
                 </Gallery>
-                <Submissions submissions={this.state.submissions}/>
+                <Submissions
+                  submissions={this.state.submissions}
+                  />
 
                 </div>
               )

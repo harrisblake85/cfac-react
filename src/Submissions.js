@@ -7,8 +7,6 @@ const Submissions = (props) => {
 
   let submissions = props.submissions || [];
   submissions = submissions.map((submission) => {
-    submission.show= false;
-    submission.class="sub-dex"
     return(
       <NavLink key={submission._id} to={"/submissions/"+submission._id}>
         <Submission
@@ -20,7 +18,7 @@ const Submissions = (props) => {
     )
   });
 
-  return submissions
+  return (submissions)
 }
 
 export default Submissions
