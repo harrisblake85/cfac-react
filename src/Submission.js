@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Submission = (props, {match}) => {
+const Submission = (props) => {
   const submission = props.submission;
   return(
     <div

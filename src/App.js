@@ -10,13 +10,15 @@ import Submission from './Submission.js'
 import Home from './Home.js';
 import About from './About.js';
 import Header from './Header.js';
-import Gallery from './Gallery.js';
+import GalleryRoute from './GalleryRoute.js';
+import ShowRoute from './ShowRoute.js';
 // import Best from './Best.js'
+import SubById from './SubById';
 
 class App extends Component {
   constructor() {
     super()
-    this.url = "http://localhost:3000";
+    this.url = "http://localhost:3010";
     this.nostate = {
       hello: "",
       submissions : [],
@@ -53,17 +55,28 @@ class App extends Component {
     // this.showSubmission(this.state.submissions[0]);
   };
 
-  showSubmission(submission){
-    console.log(submission);
-    this.setState({
-      submission
+  showSubmission(id){
+    console.log(id);
+    fetch(this.url+"/submissions/"+id)
+    .then((response) => {
+      return response.json()
     })
+    .then((json) => {
+      console.log(json);
+      this.setState({
+        submission:json
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
   };
 
   showGallery() {
     // this.becomeNoState()
-    let url="http://localhost:3000"
-    fetch(url+"/submissions")
+
+    fetch(this.url+"/submissions")
     .then((response) => {
       return response.json()
     })
@@ -88,23 +101,18 @@ class App extends Component {
           <Header />
           <Route exact path="/" component={Home}/>
           <Route path="/about" component={About}/>
-          <Route path="/gallery" render={() => {
+          <GalleryRoute showGallery={this.showGallery.bind(this)} path="/gallery" render={() => {
               return(
-                <div>
-                <Gallery showGallery={this.showGallery.bind(this)}>
-                </Gallery>
                 <Submissions
                   submissions={this.state.submissions}
                   />
-
-                </div>
               )
           }}/>
-          <Route path="/submissions/:id" render={() => {
-              return(
-                <Submission submission={this.state.submission}/>
-              )
-            }} />
+        <Route showSubmission={this.showSubmission.bind(this)} path="/submissions/:id"
+          id = {"5a6640d0b02e79f3fe95e393"}
+          component={SubById}
+            />
+
         </div>
       </BrowserRouter>
     );
