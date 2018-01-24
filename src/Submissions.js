@@ -1,17 +1,22 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Submission from './Submission.js'
+
 const Submissions = (props) => {
   console.log(props.submissions);
-  let submissions = props.submissions;
+
+  let submissions = props.submissions || [];
   submissions = submissions.map((submission) => {
     submission.show= false;
     submission.class="sub-dex"
     return(
-      <Submission
-        key = {submission.id}
-        showSubmission = {props.showSubmission.bind(this)}
-        submission = {submission}
-        />
+      <NavLink key={submission._id} to={"/submissions/"+submission._id}>
+        <Submission
+          submission = {submission}
+          />
+      </NavLink>
+
+
     )
   });
 

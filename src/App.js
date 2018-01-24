@@ -5,10 +5,12 @@ import {
 } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
-// import Submissions from './Submissions.js';
-// import Submission from './Submission.js'
-import Home from './Home.js'
-import About from './About.js'
+import Submissions from './Submissions.js';
+import Submission from './Submission.js'
+import Home from './Home.js';
+import About from './About.js';
+import Header from './Header.js';
+import Gallery from './Gallery.js';
 // import Best from './Best.js'
 
 class App extends Component {
@@ -46,20 +48,22 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.showHome()
+    this.showHome();
+    // this.showGallery();
+    // this.showSubmission(this.state.submissions[0]);
   };
 
   showSubmission(submission){
     console.log(submission);
-    this.becomeNoState()
     this.setState({
       submission
     })
   };
 
   showGallery() {
-    this.becomeNoState()
-    fetch(this.url+"/submissions")
+    // this.becomeNoState()
+    let url="http://localhost:3000"
+    fetch(url+"/submissions")
     .then((response) => {
       return response.json()
     })
@@ -71,15 +75,35 @@ class App extends Component {
     .catch((err) => {
       console.log(err);
     });
+
   };
+  hey(){
+    console.log("hey");
+  }
 
   render() {
     return (
       <BrowserRouter>
-      <div className="Container">
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-      </div>
+        <div className="container">
+          <Header />
+          <Route exact path="/" component={Home}/>
+          <Route path="/about" component={About}/>
+          <Route path="/gallery" render={() => {
+              return(
+                <div>
+                <Gallery showGallery={this.showGallery.bind(this)}>
+                </Gallery>
+                <Submissions submissions={this.state.submissions}/>
+
+                </div>
+              )
+          }}/>
+          <Route path="/submissions/:id" render={() => {
+              return(
+                <Submission submission={this.state.submission}/>
+              )
+            }} />
+        </div>
       </BrowserRouter>
     );
   }
