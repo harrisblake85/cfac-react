@@ -1,14 +1,47 @@
 import React,{Component} from 'react';
-// import Submission from './Submission.js'
+import Submission from './Submission.js'
 
 class SubById extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      submission:{
 
-  componentDidMount(){
+      }
+    }
   }
+
+  showSubmission(id){
+    console.log(id);
+    fetch("http://localhost:3010/submissions/"+id)
+    .then((response) => {
+      console.log(response);
+      return response.json()
+    })
+    .then((json) => {
+      console.log(json);
+      this.setState({
+        submission:json
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+  };
+
+  componentWillMount(){
+    this.showSubmission(this.props.match.params.id)
+  }
+
   render(){
     console.log(this.props);
+    console.log(this.props.match.params.id);
     return(
-      <div></div>
+       <Submission
+        submission = {this.state.submission}
+        />
+
     )
   }
 

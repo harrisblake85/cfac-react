@@ -108,8 +108,8 @@ class App extends Component {
                   />
               )
           }}/>
-        <Route showSubmission={this.showSubmission.bind(this)} path="/submissions/:id"
-          id = {"5a6640d0b02e79f3fe95e393"}
+        <Route
+          path="/submissions/:id"
           component={SubById}
             />
 
