@@ -8,21 +8,19 @@ class SubById extends Component {
       submission:{
 
       }
-    }
+    };
+    this.url = "http://localhost:3010";
   }
   componentWillMount(){
     this.showSubmission(this.props.match.params.id)
   }
 
   showSubmission(id){
-    console.log(id);
-    fetch("http://localhost:3010/submissions/"+id)
+    fetch(this.url+"/submissions/"+id)
     .then((response) => {
-      console.log(response);
       return response.json()
     })
     .then((json) => {
-      console.log(json);
       this.setState({
         submission:json
       })
@@ -34,19 +32,16 @@ class SubById extends Component {
   };
 
   render(){
-    console.log(this.props);
-    console.log(this.props.match.params.id);
     return(
        <Submission
         subclass = "sub_id"
         submission = {this.state.submission}
         />
-
     )
   }
 
 
-  }
+};
 
 
 export default SubById;

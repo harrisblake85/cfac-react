@@ -27,6 +27,10 @@ class App extends Component {
     this.state.hello = "Hello"
   };
 
+  componentDidMount() {
+    this.showBest();
+  };
+
   showBest(){
     this.setState({hello:"Hello"})
     fetch(this.url+"/submissions/best")
@@ -43,29 +47,6 @@ class App extends Component {
       console.log(err);
     });
   };
-
-  componentDidMount() {
-    this.showBest();
-  };
-
-  showSubmission(id){
-    console.log(id);
-    fetch(this.url+"/submissions/"+id)
-    .then((response) => {
-      return response.json()
-    })
-    .then((json) => {
-      console.log(json);
-      this.setState({
-        submission:json
-      })
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-
-  };
-
 
   render() {
     return (

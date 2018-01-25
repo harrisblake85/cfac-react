@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 import Submission from './Submission.js'
 
 const Submissions = (props) => {
-  console.log(props.submissions);
-
   let submissions = props.submissions || [];
   submissions = submissions.map((submission) => {
     return(
