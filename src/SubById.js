@@ -5,9 +5,7 @@ class SubById extends Component {
   constructor(props){
     super(props)
     this.state={
-      submission:{
-
-      }
+      submission:{}
     };
     this.url = "http://localhost:3010";
   }
@@ -15,32 +13,25 @@ class SubById extends Component {
     this.showSubmission(this.props.match.params.id)
   }
 
-  showSubmission(id){
-    fetch(this.url+"/submissions/"+id)
-    .then((response) => {
-      return response.json()
-    })
-    .then((json) => {
-      this.setState({
-        submission:json
-      })
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-
+  async showSubmission(id){
+    try {
+      const response   = await fetch(this.url+"/submissions/"+id);
+      const submission = await response.json();
+                         await this.setState({submission})
+    } catch (e) {
+      console.log(e);
+      this.setState({submission:{title:"Not Found"}})
+    }
   };
 
   render(){
     return(
-       <Submission
+      <Submission
         subclass = "sub_id"
         submission = {this.state.submission}
         />
     )
   }
-
-
 };
 
 

@@ -102,6 +102,13 @@ header {
   width: 15em;
   height: 10em;
 }
+.sub_best {
+  text-align: center;
+}
+.sub_best img{
+  width: 15em;
+  height: 10em;
+}
 
 @media (min-width: 0) and (max-width: 768px) {
   body {
