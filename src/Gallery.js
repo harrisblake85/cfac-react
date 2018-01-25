@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Submissions from './Submissions.js';
+
 class Gallery extends Component {
   constructor(){
     super()

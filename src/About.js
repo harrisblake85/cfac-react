@@ -7,5 +7,5 @@ const About = () => {
       <p>Creatives for a cause lets creatives make submissions etc to support many different causes!</p>
     </div>
   )
-}
+};
 export default About;

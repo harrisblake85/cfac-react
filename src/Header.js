@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
 const Header = () => (
   <header>
     <ul className="main-nav">

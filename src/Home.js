@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Submission from './Submission.js';
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -37,7 +38,7 @@ class Home extends Component {
 
       </div>
     )
-  }
-}
+  };
+};
 
 export default Home;
