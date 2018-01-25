@@ -10,6 +10,9 @@ class SubById extends Component {
       }
     }
   }
+  componentWillMount(){
+    this.showSubmission(this.props.match.params.id)
+  }
 
   showSubmission(id){
     console.log(id);
@@ -29,11 +32,7 @@ class SubById extends Component {
     })
 
   };
-
-  componentWillMount(){
-    this.showSubmission(this.props.match.params.id)
-  }
-
+  
   render(){
     console.log(this.props);
     console.log(this.props.match.params.id);
