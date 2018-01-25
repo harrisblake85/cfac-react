@@ -89,13 +89,21 @@ header {
   background: #3b80d1;
 }
 
-.submission{
+.sub_gallery {
   border: 2px solid black;
   text-align: center;
 }
-.submission img{
+.sub_gallery img{
   width: 10em;
-  height: 5em;
+  height: 7.5em;
+}
+
+.sub_id {
+  text-align: center;
+}
+.sub_id img{
+  width: 15em;
+  height: 10em;
 }
 
 @media (min-width: 0) and (max-width: 768px) {

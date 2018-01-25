@@ -10,6 +10,7 @@ const Submissions = (props) => {
     return(
       <NavLink key={submission._id} to={"/submissions/"+submission._id}>
         <Submission
+          subclass = "sub_gallery"
           submission = {submission}
           />
       </NavLink>

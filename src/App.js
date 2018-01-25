@@ -3,36 +3,31 @@ import {
   BrowserRouter,
   Route
 } from 'react-router-dom';
-// import logo from './logo.svg';
 import './App.css';
-import Submissions from './Submissions.js';
-import Submission from './Submission.js'
 import Home from './Home.js';
 import About from './About.js';
 import Header from './Header.js';
-import GalleryRoute from './GalleryRoute.js';
-import ShowRoute from './ShowRoute.js';
-// import Best from './Best.js'
+import Gallery from './Gallery.js';
 import SubById from './SubById';
+// import logo from './logo.svg';
+// import Submissions from './Submissions.js';
+// import Submission from './Submission.js'
+// import Best from './Best.js'
 
 class App extends Component {
   constructor() {
     super()
     this.url = "http://localhost:3010";
-    this.nostate = {
+    this.state = {
       hello: "",
       submissions : [],
       submission : null,
       best : null
     };
-    this.state = JSON.parse(JSON.stringify(this.nostate));
     this.state.hello = "Hello"
   };
-  becomeNoState(){
-    this.setState(JSON.parse(JSON.stringify(this.nostate)));
-  }
-  showHome(){
-    this.becomeNoState()
+
+  showBest(){
     this.setState({hello:"Hello"})
     fetch(this.url+"/submissions/best")
     .then((response) => {
@@ -50,9 +45,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.showHome();
-    // this.showGallery();
-    // this.showSubmission(this.state.submissions[0]);
+    this.showBest();
   };
 
   showSubmission(id){
@@ -73,26 +66,6 @@ class App extends Component {
 
   };
 
-  showGallery() {
-    // this.becomeNoState()
-
-    fetch(this.url+"/submissions")
-    .then((response) => {
-      return response.json()
-    })
-    .then((json) => {
-      this.setState({
-        submissions:json
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  };
-  hey(){
-    console.log("hey");
-  }
 
   render() {
     return (
@@ -101,17 +74,8 @@ class App extends Component {
           <Header />
           <Route exact path="/" component={Home}/>
           <Route path="/about" component={About}/>
-          <GalleryRoute showGallery={this.showGallery.bind(this)} path="/gallery" render={() => {
-              return(
-                <Submissions
-                  submissions={this.state.submissions}
-                  />
-              )
-          }}/>
-        <Route
-          path="/submissions/:id"
-          component={SubById}
-            />
+          <Route path="/gallery" component={Gallery}/>
+          <Route path="/submissions/:id" component={SubById}/>
 
         </div>
       </BrowserRouter>
