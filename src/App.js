@@ -8,7 +8,8 @@ import Home from './Home.js';
 import About from './About.js';
 import Header from './Header.js';
 import Gallery from './Gallery.js';
-import SubById from './SubById';
+import SubById from './SubById.js';
+import Auth from './Auth.js';
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/" component={Home}/>
           <Route path="/about" component={About}/>
           <Route path="/gallery" component={Gallery}/>
+          <Route path="/user" component={Auth}/>
           <Route path="/submissions/:id" component={SubById}/>
 
         </div>

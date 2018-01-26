@@ -85,9 +85,14 @@ header {
   color: #fff;
   background: #3b80d1;
 }
-
+.auth_div{
+  padding: 8%;
+  margin: 5%;
+  /* background-color: #87CEEB; */
+  border-radius: 12px;
+}
 .sub_gallery {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   text-align: center;
 }
 .sub_gallery img{

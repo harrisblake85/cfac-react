@@ -24,6 +24,7 @@ class Gallery extends Component {
 
   render(){
     return(
+
       <Submissions
         submissions = {this.state.submissions}
         />
