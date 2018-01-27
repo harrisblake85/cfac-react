@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import Submissions from './Submissions.js';
+import config from './config';
 
 class Gallery extends Component {
   constructor(){
     super()
-    this.state={ submissions: [] }
-    this.url = "http://localhost:3010";
+    this.state={
+      submissions: [],
+      page : "1",
+      sort : "likes",
+      asc  : "-1"
+     }
   };
 
   componentWillMount(){
@@ -14,7 +19,7 @@ class Gallery extends Component {
 
   async showGallery() {
     try {
-      const response    = await fetch(this.url+"/submissions");
+      const response    = await fetch(config.url+"/submissions/page/"+this.state.page+"/"+this.state.sort+"/"+this.state.asc);
       const submissions = await response.json();
                           await this.setState({submissions});
     } catch (e) {

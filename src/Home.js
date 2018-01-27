@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Submission from './Submission.js';
+import config from './config';
 
 class Home extends Component {
   constructor(props) {
     super(props)
-    this.url   = "http://localhost:3010";
     this.state = { best : {}  };
   };
 
@@ -14,7 +14,7 @@ class Home extends Component {
 
   async showBest(){
     try {
-      const response = await fetch(this.url+"/submissions/best")
+      const response = await fetch(config.url+"/submissions/best")
       const best     = await response.json()
                        await this.setState({best});
     } catch (e) {

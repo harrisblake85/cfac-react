@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import Submission from './Submission.js'
+import Submission from './Submission.js';
+import config from './config';
 
 class SubById extends Component {
   constructor(props){
@@ -7,7 +8,6 @@ class SubById extends Component {
     this.state={
       submission:{}
     };
-    this.url = "http://localhost:3010";
   }
   componentWillMount(){
     this.showSubmission(this.props.match.params.id)
@@ -15,7 +15,7 @@ class SubById extends Component {
 
   async showSubmission(id){
     try {
-      const response   = await fetch(this.url+"/submissions/"+id);
+      const response   = await fetch(config.url+"/submissions/"+id);
       const submission = await response.json();
                          await this.setState({submission})
     } catch (e) {

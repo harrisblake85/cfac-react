@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import config from './config'   //baseUrl
-// styled components
+import config from './config'
 import { Button } from './shared/buttons'
 import { Input } from './shared/inputs'
 import { Warning } from './shared/messages'
