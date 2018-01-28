@@ -47,7 +47,9 @@ button {
   cursor: pointer;
   border-color: rgba(0,0,0, .1);
 }
-
+button.red {
+  background: #B22222;
+}
 .container {
   width: 95%;
   max-width: 780px;

@@ -39,6 +39,7 @@ class Login extends Component {
       let json = {};
       if (response.ok) {
               json = await response.json();
+              console.log(json.token);
               localStorage.setItem('token', JSON.stringify(json.token))
               this.continue = true;
             } else {
@@ -75,7 +76,8 @@ class Login extends Component {
             onChange={ this.handleInput.bind(this) }
           />
           <Button
-            onClick={ this.handleSubmit.bind(this) }>
+            onClick={ this.handleSubmit.bind(this) }
+            >
             LOG IN
           </Button>
         </form>

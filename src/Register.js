@@ -26,20 +26,23 @@ class Register extends Component {
     event.preventDefault();
     const userData = { username: this.state.username, password: this.state.userpass }
     try {
-    const response = await fetch(config.url + '/users', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userData)
-    });
-      const json = await response.json();
+      const response = await fetch(config.url + '/users', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      });
+      let json = {};
       if (response.ok) {
-              localStorage.setItem('token', JSON.stringify(json.token))
-              this.continue = true;
-            } else {
-              throw json
-            }
+        json = await response.json();
+        console.log(json.token);
+        localStorage.setItem('token', JSON.stringify(json.token))
+        this.continue = true;
+      } else {
+        json = await response.json();
+        throw json
+      }
 
     } catch (e) {
       console.log("error:",e);
@@ -66,6 +69,10 @@ class Register extends Component {
           <Input name='username' type='text' placeholder='user name'
             onChange={ this.handleInput.bind(this) }/>
           <Input name='userpass' type='password' placeholder='password'
+            onChange={ this.handleInput.bind(this) }/>
+          <Input name='useremail' type='text' placeholder='email@example.com'
+            onChange={ this.handleInput.bind(this) }/>
+          <Input name='userimg' type='password' placeholder='Profile Image Url'
             onChange={ this.handleInput.bind(this) }/>
           <Button
             onClick={ this.handleSubmit.bind(this) }>
