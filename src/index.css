@@ -99,7 +99,7 @@ header {
 }
 .sub_gallery img{
   width: 10em;
-  height: 7.5em;
+  height: auto;
 }
 
 .sub_id {
@@ -107,14 +107,14 @@ header {
 }
 .sub_id img{
   width: 15em;
-  height: 10em;
+  height: auto;
 }
 .sub_best {
   text-align: center;
 }
 .sub_best img{
   width: 15em;
-  height: 10em;
+  height: auto;
 }
 
 .gallery{

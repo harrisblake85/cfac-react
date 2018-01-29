@@ -69,10 +69,10 @@ class Login extends Component {
           <Warning>{ this.state.err }</Warning>
         }
         <form>
-          <Input name='username' type='text' placeholder='user name'
+          <Input name='username' type='text' placeholder='Username'
             onChange={ this.handleInput.bind(this) }
             />
-          <Input name='userpass' type='password' placeholder='password'
+          <Input name='userpass' type='password' placeholder='Password'
             onChange={ this.handleInput.bind(this) }
             />
           <Button

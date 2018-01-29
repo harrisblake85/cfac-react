@@ -66,13 +66,13 @@ class Register extends Component {
           <Warning>{ this.state.err }</Warning>
         }
         <form>
-          <Input name='username' type='text' placeholder='user name'
+          <Input name='username' type='text' placeholder='Username'
             onChange={ this.handleInput.bind(this) }/>
-          <Input name='userpass' type='password' placeholder='password'
+          <Input name='userpass' type='password' placeholder='Password'
             onChange={ this.handleInput.bind(this) }/>
-          <Input name='useremail' type='text' placeholder='email@example.com'
+          <Input name='useremail' type='text' placeholder='Email@example.com'
             onChange={ this.handleInput.bind(this) }/>
-          <Input name='userimg' type='password' placeholder='Profile Image Url'
+          <Input name='userimg' type='text' placeholder='Profile-Url'
             onChange={ this.handleInput.bind(this) }/>
           <Button
             onClick={ this.handleSubmit.bind(this) }>
