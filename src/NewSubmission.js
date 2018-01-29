@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import config from './config.js';
+import { Redirect } from 'react-router-dom';
 import { Button } from './shared/buttons';
 import { Input } from './shared/inputs';
 import { Warning } from './shared/messages';
@@ -7,7 +8,7 @@ import { Warning } from './shared/messages';
 class NewSubmission extends Component {
   constructor(props) {
     super(props);
-    this.state = {file: '',imagePreviewUrl: '',status:"Upload Submission!"};
+    this.state = {file: '',imagePreviewUrl: '',status:"Upload Submission!",created:false,submission:{}};
   }
 
   componentDidMount(){
@@ -70,6 +71,8 @@ class NewSubmission extends Component {
       const newjson = await newresponse.json();
       console.log(newjson);
       this.setState({status:"Uploaded!"})
+      this.setState({submission:newjson})
+      this.setState({created:true})
     } catch (e) {
       console.log(e);
     }
@@ -114,9 +117,14 @@ class NewSubmission extends Component {
         );
       }
 
+      if (this.state.created) {
+        return (<Redirect to={"/submissions/"+this.state.submission._id} />)
+      }
+
       return (
         <div className="new_sub">
-          <a href="https://i.imgur.com/XtNyDlw.png" target="_blank" rel="noopener noreferrer">Link To T-Shirt Template</a>
+          <a href="https://i.imgur.com/2uYYMsa.png" target="_blank" rel="noopener noreferrer">Link To T-Shirt Template</a>
+          <br></br>
           {this.state.user &&
             <h1>{"Hello "+this.state.user.username+"!"}</h1>
           }
