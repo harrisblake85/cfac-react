@@ -42,40 +42,87 @@ class NewSubmission extends Component {
     this.setState({status:"Uploading.."})
     console.log(this.state.file);
     let file = this.state.file;
-
-    const response = await fetch('https://api.imgur.com/3/upload.json', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Client-ID a444d490f310502'
-      },
-      body: this.state.file
-    });
-    console.log('handle uploading-', file);
-    const json = await response.json();
-    console.log("Imgur Link",json.data.link);
-    const newsubmission = {
-        title   : await this.state.title,
-        img     : await json.data.link,
-        desc    : await this.state.desc,
-        creator : await this.state.user
-    }
     try {
-      const newresponse = await fetch(config.url+'/submissions',{
-        method:"Post",
-        headers:{
-          'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(newsubmission)
-      });
-      const newjson = await newresponse.json();
-      console.log(newjson);
-      this.setState({status:"Uploaded!"})
-      this.setState({submission:newjson})
-      this.setState({created:true})
+      let response = {};
+      if (file) {
+        response = await fetch('https://api.imgur.com/3/upload.json', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            Authorization: 'Client-ID a444d490f310502'
+          },
+          body: this.state.file
+        });
+      }
+      else {
+        console.log("User Did Not Upload Image");
+        this.setState({err:"You need to upload an image in order to make a submission!"})
+        throw response
+      }
+
+      console.log('handle uploading-', file);
+      const json = await response.json();
+      if (response.ok) {
+        console.log("great");
+        console.log(json);
+      }
+      else {
+        console.log("All fields are required!");
+        this.setState({err:"All fields are required!"})
+        throw response
+      }
+      console.log("Imgur Link",json.data.link);
+
+      try {
+        let newsubmission = {};
+        if (this.state.user.username) {
+           newsubmission = {
+              title   : await this.state.title,
+              img     : await json.data.link,
+              desc    : await this.state.desc,
+              creator : await this.state.user
+          }
+        }
+        else {
+          console.log("User Did Not Login");
+          this.setState({err:"You cannot upload a submission until you login!"})
+          throw this.state.user.username
+        }
+        let newresponse
+        if (newsubmission.title && newsubmission.desc) {
+          newresponse = await fetch(config.url+'/submissions',{
+            method:"Post",
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(newsubmission)
+          });
+        }
+
+        const newjson = await newresponse.json();
+        if (newresponse.ok) {
+          console.log(newjson);
+          this.setState({status:"Uploaded!"})
+          this.setState({submission:newjson})
+          this.setState({created:true})
+        }else {
+          this.setState({status:"Try Again!"})
+          this.setState({err:"All fields are required!"})
+          throw newresponse
+
+        }
+
+      } catch (e) {
+        this.setState({status:"Try Again!"})
+        this.setState({err:"All Fields Are Required!"})
+        console.log(e);
+      }
     } catch (e) {
-      console.log(e);
+      this.setState({status:"Try Again!"})
+      console.log("It Failed Bottom Catch"+e);
     }
+
+
 
 
   }
