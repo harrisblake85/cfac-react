@@ -124,20 +124,20 @@ header {
   .home a {
     border-color: transparent;
   }
-   .main-nav a {
-     border-top: 2px solid transparent;
-     border-bottom: 2px solid transparent;
-   }
-   .main-nav a:hover {
-     border-color: rgba(0,0,0, .1);
-   }
-   .home a,
-   input,
-   button {
-     display: block;
-     width: 100%;
-     margin-bottom: 1em;
-   }
+  .main-nav a {
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+  }
+  .main-nav a:hover {
+    border-color: rgba(0,0,0, .1);
+  }
+  .home a,
+  input,
+  button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+  }
 }
 
 @media (min-width: 769px) {

@@ -4,23 +4,23 @@ const Like = (props) => {
   let text = "Like This Submission!";
   let classy = "";
   if (props.liked) {
-      text = "You've Already Liked!";
-      classy="red";
+    text = "You've Already Liked!";
+    classy="red";
   }
 
-    return(
+  return(
 
-      <button
-        className={classy}
-        onClick={
-          () => {
-            props.likeSubmission(props.submission._id)
-          }
+    <button
+      className={classy}
+      onClick={
+        () => {
+          props.likeSubmission(props.submission._id)
+        }
 
-        }>{text}</button>
+      }>{text}</button>
 
     )
-}
+  }
 
 
 
@@ -33,4 +33,4 @@ const Like = (props) => {
 
 
 
-export default Like;
+  export default Like;

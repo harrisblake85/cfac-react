@@ -10,7 +10,7 @@ class Gallery extends Component {
       page : "1",
       sort : "likes",
       asc  : "-1"
-     }
+    }
   };
 
   componentWillMount(){
@@ -21,7 +21,7 @@ class Gallery extends Component {
     try {
       const response    = await fetch(config.url+"/submissions/page/"+this.state.page+"/"+this.state.sort+"/"+this.state.asc);
       const submissions = await response.json();
-                          await this.setState({submissions});
+      await this.setState({submissions});
     } catch (e) {
       this.setState({submissions:[{title:"Not Found",key:"Not Found"}]});
     }

@@ -9,6 +9,7 @@ const Header = () => (
       <li><NavLink to="/gallery">Gallery</NavLink></li>
       <li><NavLink to="/user">User</NavLink></li>
       <li><NavLink to="/cart">Cart</NavLink></li>
+      <li><NavLink to="/new">New Submission</NavLink></li>
     </ul>
   </header>
 );

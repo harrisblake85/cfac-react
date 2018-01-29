@@ -38,13 +38,13 @@ class Login extends Component {
       console.log(await response);
       let json = {};
       if (response.ok) {
-              json = await response.json();
-              console.log(json.token);
-              localStorage.setItem('token', JSON.stringify(json.token))
-              this.continue = true;
-            } else {
-              throw response
-            }
+        json = await response.json();
+        console.log(json.token);
+        localStorage.setItem('token', JSON.stringify(json.token))
+        this.continue = true;
+      } else {
+        throw response
+      }
 
     } catch (e) {
       console.log("error:",e);
@@ -71,10 +71,10 @@ class Login extends Component {
         <form>
           <Input name='username' type='text' placeholder='user name'
             onChange={ this.handleInput.bind(this) }
-          />
+            />
           <Input name='userpass' type='password' placeholder='password'
             onChange={ this.handleInput.bind(this) }
-          />
+            />
           <Button
             onClick={ this.handleSubmit.bind(this) }
             >

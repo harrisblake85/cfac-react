@@ -16,7 +16,7 @@ class Home extends Component {
     try {
       const response = await fetch(config.url+"/submissions/best")
       const best     = await response.json()
-                       await this.setState({best});
+      await this.setState({best});
     } catch (e) {
       console.log(e);
       this.setState({best:{title:"Not Found"}})

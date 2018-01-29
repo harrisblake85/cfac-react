@@ -53,7 +53,7 @@ class Register extends Component {
       this.setState({ redirectToReferrer: this.continue });
 
     }
-  }
+  };
 
   render() {
     if (this.state.redirectToReferrer) {
