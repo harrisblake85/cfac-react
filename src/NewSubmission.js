@@ -116,6 +116,7 @@ class NewSubmission extends Component {
 
       return (
         <div className="new_sub">
+          <a href="https://i.imgur.com/XtNyDlw.png" target="_blank" rel="noopener noreferrer">Link To T-Shirt Template</a>
           {this.state.user &&
             <h1>{"Hello "+this.state.user.username+"!"}</h1>
           }
