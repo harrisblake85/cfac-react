@@ -8,7 +8,7 @@ import { Warning } from './shared/messages';
 class NewSubmission extends Component {
   constructor(props) {
     super(props);
-    this.state = {file: '',imagePreviewUrl: '',status:"Upload Submission!",created:false,submission:{}};
+    this.state = {file: '',imagePreviewUrl: '',status:"Upload Submission!",created:false,submission:{},user:{}};
   }
 
   componentDidMount(){
@@ -125,7 +125,7 @@ class NewSubmission extends Component {
         <div className="new_sub">
           <a href="https://i.imgur.com/2uYYMsa.png" target="_blank" rel="noopener noreferrer">Link To T-Shirt Template</a>
           <br></br>
-          {this.state.user &&
+          {this.state.user.username &&
             <h1>{"Hello "+this.state.user.username+"!"}</h1>
           }
           { this.state.err &&

@@ -93,8 +93,8 @@ class SubById extends Component {
   render(){
     return(
       <div className = "sub_id">
-        {this.state.user &&
-          <h1>{"Hello "+this.state.user.username+"!"}</h1>
+        {this.state.user.username &&
+          <h2>{"Hello "+this.state.user.username+"!"}</h2>
         }
         { this.state.err &&
           <Warning>{ this.state.err }</Warning>

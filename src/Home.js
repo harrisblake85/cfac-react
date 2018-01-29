@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Submission from './Submission.js';
+import { NavLink } from 'react-router-dom';
 import config from './config';
 
 class Home extends Component {
@@ -30,11 +31,15 @@ class Home extends Component {
   render(){
     return(
       <div className="main-content home">
+
         {this.state.best.title &&
-          <Submission
-            submission = {this.state.best}
-            subclass = "sub_best"
-            />
+          <NavLink key={this.state.best._id} to={"/submissions/"+this.state.best._id}>
+            <Submission
+              submission = {this.state.best}
+              subclass = "sub_best"
+              />
+          </NavLink>
+
         }
 
         <h2>Creatives For A Cause</h2>
