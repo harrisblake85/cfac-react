@@ -117,6 +117,22 @@ header {
   height: 10em;
 }
 
+.gallery{
+  margin: auto;
+  padding: 2em;
+  border-radius: 2em;
+  background: #fbb040;
+  width: 80%;
+  height: auto;
+}
+.new_sub {
+  text-align: center;
+}
+.new_sub img {
+  width: 80%;
+  height: auto;
+}
+
 @media (min-width: 0) and (max-width: 768px) {
   body {
     padding-top: .8em;

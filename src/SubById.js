@@ -38,17 +38,21 @@ class SubById extends Component {
     }
     else {
       console.log(json.message);
-      await this.setState({err:json.message})
+      await this.setState({err:"You need to login to like a submission!"})
     }
     return (json)
   };
 
   async showSubmission(id){
     const user = await this.getCurrentUser();
-    if (user.liked.includes(id)) {
-      console.log("hey");
-      this.setState({userliked:true})
+    const userid = id;
+    if (user.liked) {
+      if (user.liked.includes(userid)) {
+        console.log("hey");
+        this.setState({userliked:true})
+      }
     }
+
     try {
       const response   = await fetch(config.url+"/submissions/"+id);
       const submission = await response.json();
@@ -90,7 +94,7 @@ class SubById extends Component {
     return(
       <div className = "sub_id">
         {this.state.user &&
-          <h1>{this.state.user.username}</h1>
+          <h1>{"Hello "+this.state.user.username+"!"}</h1>
         }
         { this.state.err &&
           <Warning>{ this.state.err }</Warning>

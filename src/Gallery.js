@@ -29,10 +29,11 @@ class Gallery extends Component {
 
   render(){
     return(
-
+      <div className="gallery">
       <Submissions
         submissions = {this.state.submissions}
         />
+      </div>
     )
   };
 

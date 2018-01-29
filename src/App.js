@@ -10,7 +10,7 @@ import Header from './Header.js';
 import Gallery from './Gallery.js';
 import SubById from './SubById.js';
 import Auth from './Auth.js';
-import ImageUpload from './ImageUpload.js';
+import NewSubmission from './NewSubmission.js';
 
 class App extends Component {
 
@@ -25,7 +25,7 @@ class App extends Component {
           <Route path="/gallery" component={Gallery}/>
           <Route path="/user" component={Auth}/>
           <Route path="/submissions/:id" component={SubById}/>
-          <Route path="/new" component={ImageUpload}/>
+          <Route path="/new" component={NewSubmission}/>
 
         </div>
       </BrowserRouter>
