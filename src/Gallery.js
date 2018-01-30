@@ -54,7 +54,6 @@ class Gallery extends Component {
     })
   }
   async sortBycreatedAt() {
-    console.log("Sort By Created At");
     await this.setState({sort:"createdAt",createdAtclass:"active"})
     await this.setState({explain2:"Most Recent",explain1:"Least Recent"})
     await this.setState({createdAtactive:!this.state.createdAtactive});
@@ -62,7 +61,6 @@ class Gallery extends Component {
     this.showGallery();
   }
   async sortBylikes() {
-    console.log("Sort By Likes");
     await this.setState({sort:"likes",likesclass:"active"})
     await this.setState({explain2:"Most Likes",explain1:"Least Likes"})
     await this.setState({likesactive:!this.state.likesactive});
@@ -71,16 +69,12 @@ class Gallery extends Component {
   }
 
   async sortBylowhigh() {
-    console.log("Sort Low To High");
     await this.setState({asc:"1",ascclass:"active"})
-
     this.showGallery();
   }
 
   async sortByhighlow() {
-    console.log("Sort High To Low");
     await this.setState({asc:"-1",dscclass:"active"})
-
     this.showGallery();
   }
 
