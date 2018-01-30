@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter,
-  Route
+  Route, Redirect
 } from 'react-router-dom';
 import './App.css';
 import Home from './Home.js';
@@ -22,7 +22,9 @@ class App extends Component {
           <Header />
           <Route exact path="/" component={Home}/>
           <Route path="/about" component={About}/>
-          <Route path="/gallery" component={Gallery}/>
+          <Route path="/gallery/:page/:sort/:asc" component={Gallery}/>
+          <Route exact path="/gallery"
+                     render={ () => <Redirect to={"/gallery/1/likes/-1"} /> } />
           <Route path="/user" component={Auth}/>
           <Route path="/submissions/:id" component={SubById}/>
           <Route path="/new" component={NewSubmission}/>
