@@ -8,9 +8,7 @@ import Dropdown, {DropdownTrigger,DropdownContent} from 'react-simple-dropdown';
 class Gallery extends Component {
   constructor(props){
     super(props)
-    console.log(props);
     this.path = this.props.match.path;
-    console.log(this.path);
     this.state={
       submissions: [],
       page : this.props.match.params.page,
@@ -90,7 +88,6 @@ class Gallery extends Component {
 
 
   render(){
-    console.log(this.props);
     this.dropdown_insides =
     <DropdownContent>
       <ul><li><Link
