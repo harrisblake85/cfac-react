@@ -217,3 +217,11 @@ height: 100%;
   display: block;
 
 }
+
+.gif{
+  margin-top: 0em;
+  margin: auto;
+  display: block;
+  height: 100px;
+  width: 400px;
+}

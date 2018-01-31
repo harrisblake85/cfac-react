@@ -18,6 +18,8 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        <div>
+        <img className="gif" src="https://i.imgur.com/O7s0r2r.gif" alt="Banner"></img>
         <div className="container">
           <Header />
           <Route exact path="/" component={Home}/>
@@ -29,6 +31,7 @@ class App extends Component {
           <Route path="/submissions/:id" component={SubById}/>
           <Route path="/new" component={NewSubmission}/>
 
+        </div>
         </div>
       </BrowserRouter>
     );
