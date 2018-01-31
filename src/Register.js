@@ -24,7 +24,7 @@ class Register extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const userData = { username: this.state.username, password: this.state.userpass }
+    const userData = { username: this.state.username, password: this.state.userpass, email:this.state.useremail, img:this.state.userimg }
     try {
       const response = await fetch(config.url + '/users', {
         method: 'post',

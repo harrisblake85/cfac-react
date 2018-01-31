@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import config from './config.js';
 import Submissions from './Submissions.js';
+import { Button }  from './shared/buttons';
 import { Warning } from './shared/messages';
   class Cart extends Component{
     constructor(props) {
@@ -8,7 +9,8 @@ import { Warning } from './shared/messages';
       this.state= {
         cart:[],
         user:{},
-        submissions:[]
+        submissions:[],
+        emailed: false
       };
     }
     componentDidMount(){
@@ -51,6 +53,28 @@ import { Warning } from './shared/messages';
       return (json)
     };
 
+    async checkout(){
+      try {
+      const token = await JSON.parse(localStorage.getItem('token'));
+      const response = await fetch(config.url+"/submissions/checkout/",{
+        method:"GET",
+        headers: {
+          'Content-Type': 'application/json',
+          'x-access-token': token
+        }
+      });
+      console.log(response);
+      const json = await response.json();
+      console.log(json);
+      this.setState({emailed : true});
+
+      }
+      catch (e) {
+        console.log(e);
+      }
+
+    }
+
     render(){
       return(
 
@@ -62,10 +86,21 @@ import { Warning } from './shared/messages';
           { this.state.err &&
             <Warning>{ this.state.err }</Warning>
           }
+          {this.state.emailed &&
+            <h1>Check your email for order confirmation!</h1>
+          }
+            <Button
+              className="checkoutbutton"
+              onClick={this.checkout.bind(this)}
+              >
+              Checkout!
+            </Button>
+            {!this.state.emailed &&
+              <Submissions
+                submissions = {this.state.submissions}
+                />
+            }
 
-            <Submissions
-              submissions = {this.state.submissions}
-              />
 
         </div>
       )
