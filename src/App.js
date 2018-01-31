@@ -11,6 +11,7 @@ import Gallery from './Gallery.js';
 import SubById from './SubById.js';
 import Auth from './Auth.js';
 import NewSubmission from './NewSubmission.js';
+import Cart from './Cart.js';
 
 class App extends Component {
 
@@ -30,6 +31,7 @@ class App extends Component {
           <Route path="/user" component={Auth}/>
           <Route path="/submissions/:id" component={SubById}/>
           <Route path="/new" component={NewSubmission}/>
+          <Route path="/cart" component={Cart}/>
 
         </div>
         </div>

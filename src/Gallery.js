@@ -122,7 +122,7 @@ class Gallery extends Component {
 
         <Dropdown active={false} onClick = {this.lastpage.bind(this)}>
           <Link to={"/gallery/"+(parseInt(this.state.page,10)-1)+"/"+this.state.sort+"/"+this.state.asc}>
-          <DropdownTrigger><Button >Last Page</Button></DropdownTrigger>
+          <Button >Last Page</Button>
           </Link>
           </Dropdown>
 
@@ -139,7 +139,7 @@ class Gallery extends Component {
 
         <Dropdown active={false} onClick = {this.nextpage.bind(this)}>
           <Link to={"/gallery/"+(parseInt(this.state.page,10)+1)+"/"+this.state.sort+"/"+this.state.asc}>
-          <DropdownTrigger><Button className={"ddrbutton "+this.state.createdAtclass}>Next Page</Button></DropdownTrigger>
+          <Button >Next Page</Button>
           </Link>
           </Dropdown>
 

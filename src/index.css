@@ -104,8 +104,19 @@ height: 100%;
 .gallery{
   text-align: center;
   margin: auto;
-
   padding: 2em;
+  padding-top:0;
+  border-radius: 2em;
+  background: #fff;
+  width: 80%;
+  height: auto;
+}
+.cart{
+  text-align: center;
+  margin: auto;
+  margin-top :0;
+  padding: 2em;
+  padding-top:0;
   border-radius: 2em;
   background: #fff;
   width: 80%;

@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import Submission from './Submission.js';
 import config from './config';
 import Like from './like.js';
-import { Warning } from './shared/messages'
+import CartButton from './CartButton.js';
+import { Warning } from './shared/messages';
 
 class SubById extends Component {
   constructor(props){
@@ -13,7 +14,8 @@ class SubById extends Component {
         liked:["fusdjkop"],
         non:false
       },
-      userliked:false
+      userliked:false,
+      usercart:false
     };
   }
 
@@ -50,6 +52,13 @@ class SubById extends Component {
       if (user.liked.includes(userid)) {
         console.log("hey");
         this.setState({userliked:true})
+      }
+    }
+
+    if (user.cart) {
+      if (user.cart.includes(userid)) {
+        console.log("hey");
+        this.setState({inCart:true})
       }
     }
 
@@ -90,6 +99,32 @@ class SubById extends Component {
 
   };
 
+  async cartSubmission(id){
+    const token = await JSON.parse(localStorage.getItem('token'));
+    const response =await fetch(config.url+"/submissions/cart/"+id,{
+      method:"GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': token
+      }
+    });
+    const json = await response.json();
+    if (response.ok) {
+      console.log("ayy");
+      await this.setState({submission:json.submission})
+      await this.setState({inCart:true})
+      await localStorage.setItem('token', JSON.stringify(json.token))
+
+    }
+
+    else {
+      console.log(json.message);
+      await this.setState({err:json.message})
+    }
+
+
+  };
+
   render(){
     return(
       <div className = "sub_id">
@@ -107,6 +142,12 @@ class SubById extends Component {
           submission = {this.state.submission}
           likeSubmission = {this.likeSubmission.bind(this)}
           liked = {this.state.userliked}
+          />
+
+        <CartButton
+          submission = {this.state.submission}
+          cartSubmission = {this.cartSubmission.bind(this)}
+          inCart = {this.state.inCart}
           />
       </div>
     )
