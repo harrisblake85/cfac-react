@@ -78,6 +78,22 @@ class Gallery extends Component {
     this.showGallery();
   }
 
+  async lastpage() {
+    let nextpage = this.state.page;
+    nextpage--;
+    nextpage += "";
+    await this.setState({page:nextpage})
+    this.showGallery();
+  }
+
+  async nextpage() {
+    let nextpage = this.state.page;
+    nextpage++;
+    nextpage += "";
+    await this.setState({page:nextpage})
+    this.showGallery();
+  }
+
 
 
 
@@ -102,8 +118,13 @@ class Gallery extends Component {
 
     return(
       <div className="gallery">
-
         <div className="dropdowns">
+
+        <Dropdown active={false} onClick = {this.lastpage.bind(this)}>
+          <Link to={"/gallery/"+(parseInt(this.state.page,10)-1)+"/"+this.state.sort+"/"+this.state.asc}>
+          <DropdownTrigger><Button >Last Page</Button></DropdownTrigger>
+          </Link>
+          </Dropdown>
 
         <Dropdown active={this.state.likesactive} onClick = {this.sortBylikes.bind(this)}>
           <DropdownTrigger><Button className={"ddlbutton "+this.state.likesclass}>Sort By Likes</Button></DropdownTrigger>
@@ -114,6 +135,14 @@ class Gallery extends Component {
           <DropdownTrigger><Button className={"ddrbutton "+this.state.createdAtclass}>Sort By Date</Button></DropdownTrigger>
           {this.dropdown_insides}
         </Dropdown>
+
+
+        <Dropdown active={false} onClick = {this.nextpage.bind(this)}>
+          <Link to={"/gallery/"+(parseInt(this.state.page,10)+1)+"/"+this.state.sort+"/"+this.state.asc}>
+          <DropdownTrigger><Button className={"ddrbutton "+this.state.createdAtclass}>Next Page</Button></DropdownTrigger>
+          </Link>
+          </Dropdown>
+
 
         </div>
 
