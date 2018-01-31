@@ -77,10 +77,10 @@ class NewSubmission extends Component {
         let newsubmission = {};
         if (this.state.user.username) {
            newsubmission = {
-              title   : await this.state.title,
-              img     : await json.data.link,
-              desc    : await this.state.desc,
-              creator : await this.state.user
+              title   : this.state.title,
+              img     : json.data.link,
+              desc    : this.state.desc,
+              creator : this.state.user
           }
         }
         else {
